@@ -1,0 +1,134 @@
+.customise-pizza {
+    .row {
+        margin-top: 1rem;
+    }
+    .p-dialog-header  {
+        justify-content: flex-end;
+        padding: 0;
+    }
+    .p-dialog {
+        width: 50rem;
+        .p-dialog-content {
+            &::-webkit-scrollbar {
+                width: 0px;
+              }
+              &::-webkit-scrollbar-track {
+                background: #ddd;
+              }
+              &::-webkit-scrollbar-thumb {
+                background: #bdbdbd;
+              }
+        }
+    }
+    
+    .size {
+        padding-top: 1rem;
+        font-weight: bold;
+        .col-lg-12:nth-child(2) {
+            display: flex;
+        }
+        .col-lg-3 {
+            padding: 1rem;
+            margin-right: 1rem;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.05), 
+            0 1px 2px 0 rgba(0,0,0,.1),
+             0 2px 20px 0 rgba(0,0,0,.2)
+        }
+    }
+    .veg-toppings {
+        .header {
+            font-weight: bold;
+        }
+        .veg-toppings {
+            text-align: center;
+        }
+        .p-carousel-item  {
+            flex: none !important;
+            margin-right: 1rem;
+        }
+        .topping-price {
+            text-align: center;
+        }
+        .add-topping {
+            text-align: center;
+            margin-bottom: 1rem;
+            .add-btn {
+                border: 1px solid #1da81b;
+                border-radius: 4px;
+                color: #1da81b;
+            }
+            .remove-btn {
+                border: 1px solid #ccffd8;
+                border-radius: 4px;
+                color: #708b9d;
+                background: #E6ECF0;
+                
+            }
+        }
+      
+    }
+    .crust {
+        .header {
+            font-weight: bold;
+        }
+        .crust-checkbox {
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.05), 
+            0 1px 2px 0 rgba(0,0,0,.1),
+             0 2px 20px 0 rgba(0,0,0,.2);
+             border-radius: 5px;
+            display: flex;
+            padding: 1rem;
+            .col-lg-3 {
+                padding: 0;
+            }
+            .p-checkbox-label {
+                position: relative;
+                top: 6px;
+            }
+            .crust-price {
+                margin-top: 1rem;
+                font-weight: bold;
+               
+            }
+        }
+    }
+    .extra-cheese {
+        .header {
+            font-weight: bold !important;
+        }
+        .col-lg-6 {
+            padding: 0;
+        }
+        .col-lg-12 {
+            padding: 0;
+        }
+        .extra-cheese-price {
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.05), 
+            0 1px 2px 0 rgba(0,0,0,.1),
+             0 2px 20px 0 rgba(0,0,0,.2);
+            padding: 0.5rem;
+             height: 3rem;
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            .radio {
+                border:none !important;
+                border-radius: none !important;
+                color: none !important; 
+                padding:none !important;
+                position: relative;
+                bottom: 5px;
+            }
+            .p-checkbox-label  {
+              position: relative;
+              top: 4px;  
+            }
+         
+        }
+
+    }
+
+
+}

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {CardModule} from 'primeng/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,8 +15,9 @@ import {CardModule} from 'primeng/card';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CardModule
-  ],
+    CardModule,
+    BrowserAnimationsModule
+    ],
 
   providers: [],
   bootstrap: [AppComponent]

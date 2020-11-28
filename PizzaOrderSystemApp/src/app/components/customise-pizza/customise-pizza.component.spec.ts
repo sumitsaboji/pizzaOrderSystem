@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { CraftComponent } from './craft.component';
+import { CustomisePizzaComponent } from './customise-pizza.component';
 
-describe('CraftComponent', () => {
-  let component: CraftComponent;
-  let fixture: ComponentFixture<CraftComponent>;
+describe('CustomisePizzaComponent', () => {
+  let component: CustomisePizzaComponent;
+  let fixture: ComponentFixture<CustomisePizzaComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CraftComponent ]
+      declarations: [ CustomisePizzaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CraftComponent);
+    fixture = TestBed.createComponent(CustomisePizzaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

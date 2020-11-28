@@ -5,4 +5,5 @@ export class pizaa {
     price?: number;
     imageLink?: string;
     quantity?: number;
+    isExtraCheeseSelected?: boolean;
 }

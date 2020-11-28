@@ -12,7 +12,7 @@ import _remove from 'lodash/remove';
 export class CraftComponent implements OnInit {
   pizaa: pizaa[]; 
   subTotal: number;
-  @ViewChild('scrollDiv', {static:false}) scroll: ElementRef;
+  @ViewChild('scrollDiv') scroll: ElementRef;
   @Output() updatedCount = new EventEmitter<any>();
 
   constructor(private sharedService: SharedService) { 

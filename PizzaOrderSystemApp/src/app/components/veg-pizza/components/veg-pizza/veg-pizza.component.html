@@ -16,7 +16,7 @@
                         <span>{{item.description}}</span>
                   </div>
                     <p-footer>
-                        <div class="custome-pizza">
+                        <div class="custome-pizza" (click)="display = true; selectedPizza = item">
                             Customise
                         </div>
                         <div class="foot">
@@ -40,4 +40,6 @@
     <div class="col-lg-3">
         <app-craft (updatedCount)="updateItemCount($event)"></app-craft>
     </div>
+    
+    <app-customise-pizza *ngIf="display" (closePop)="hidePopUp($event)" [selectedCustomisePizza]="selectedPizza"  ></app-customise-pizza>
 </div>
