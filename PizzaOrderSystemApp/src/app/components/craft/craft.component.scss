@@ -1,0 +1,123 @@
+.craft {
+    margin-top: 1.5rem;
+    .header {
+        text-align: center;
+        background: #800000;
+        padding: 0.4rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        color: white;
+        height: 2.5rem;
+        font-size: 16px;
+    }
+    .craft-item {
+        max-height: calc(100vh - 17rem);
+        &::-webkit-scrollbar {
+            width: 0px;
+          }
+          &::-webkit-scrollbar-track {
+            background: #ddd;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: #bdbdbd;
+          }
+        
+        overflow-y: auto;
+        .p-card {
+            box-shadow: 0 1px 3px 0px #800000,
+            0 1px 3px 0 #800000, 
+            0 1px 3px 0 #800000;
+            .p-card-content {
+                padding: 0;
+            }
+            .p-card-body {
+                padding-bottom: 0;
+            }
+        }
+        .card {
+           margin-top: 0.5rem;
+        }
+        .content {
+            .name {
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+            }
+            .quantity {
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+
+            }
+            .plus-minus {
+                padding-bottom: 5px;
+                .btn:focus {
+                    outline: none !important;
+                    // border: none !important;
+                    box-shadow: none;
+                }
+               
+                font-weight: bold;
+                .minus {
+                    color: red;
+                    font-size: 20px;
+                    border: 1px solid red;
+                    border-radius: 2rem;
+                    height: 2rem;
+                    width: 2rem;
+                    padding-top: 1px;
+                    
+                }
+                .plus {
+                    color: green;
+                    border: 1px solid green;
+                    font-size: 20px;
+                    border-radius: 2rem;
+                    height: 2rem;
+                    width: 2rem;
+                    padding-top: 1px;
+                    padding-left: 10px;
+                }
+                .quantity-value {
+                    cursor: pointer;
+                }
+              
+            }
+        }
+    }
+    .sub-total {
+      
+        .col-lg-6  {
+            background: #800000;
+            // padding: 0.4rem;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            color: white;
+            max-width: 45%;
+            justify-content: center;
+            height: 2.5rem;
+        }
+        .col-lg-12 {
+            display: flex;
+            padding: 0;
+            justify-content: space-between;
+        }
+        .price {
+            display: flex;
+            padding: 9px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .checkout {
+            .btn{
+                color: white;
+                font-size: 16px;
+            }
+            text-align: center;
+        }
+    }
+   
+    .no-craft-message {
+        text-align: center;
+    }
+}

@@ -1,0 +1,46 @@
+<div class="craft">
+    <div class="header">
+        Craft
+    </div>
+    <div class="craft-item" id="scrollDiv" >
+        <div class="card" *ngFor="let item of pizaa; trackBy:identify">
+            <p-card>
+                <div class="content">
+                    <div class="name">
+                        <p>{{item.pizzaName}}</p>
+                        <p>{{item.price}}</p>
+                    </div>
+                    <div class="description">
+                        <p>{{item.description}}</p>
+    
+                    </div>
+                    <div class="quantity" >
+                        <p>Qantity: {{item.quantity? item.quantity : 0}}</p>
+                        <p>Total: {{item.quantity * item.price}}</p>
+                    </div>
+                    <div class="quantity plus-minus" >
+                        <!-- <button type="button" class="btn minus" [disabled]="item.quantity === 0" (click)="item.quantity = item.quantity - 1; addRemoveItemSubFunc(item)" >-</button> -->
+                        <!-- <span class="quantity-value" (click)="clear(item)">X</span> -->
+                        <!-- <button type="button" class="btn plus" (click)="item.quantity = item.quantity + 1;addRemoveItemSubFunc(item)">+</button> -->
+                    </div>
+                </div>
+            </p-card>
+        </div>
+        <div class="no-craft-message" *ngIf="pizaa.length === 0">
+            There is no any item in Craft....
+        </div>
+    </div>
+
+
+
+    <div class="sub-total" *ngIf="pizaa.length > 0">
+        <div class="col-lg-12">
+            <div class="col-lg-6 price">
+                <p>Sub total : </p><span>{{subTotal}}</span>
+            </div>
+            <div class="col-lg-6 checkout">
+                <button type="button" class="btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>

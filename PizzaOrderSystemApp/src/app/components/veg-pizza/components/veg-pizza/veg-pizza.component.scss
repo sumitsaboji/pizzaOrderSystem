@@ -1,0 +1,102 @@
+.vez-pizza {
+    .row {
+        display: flex;
+        .pizza-item-section {
+            height:  calc(100vh - 150px);
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                width: 0px;
+              }
+              &::-webkit-scrollbar-track {
+                background: #ddd;
+              }
+              &::-webkit-scrollbar-thumb {
+                background: #bdbdbd;
+              }
+        }
+       .pizza-list {
+           margin-top: 1.5rem;
+           .content {
+              padding-top: 0 !important;
+              overflow-y: hidden;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+               height: 8rem;
+
+                .name-price {
+                   font-weight: bold;
+                    display: flex;
+                    justify-content: space-between;
+               }
+           }
+       }
+       
+        .p-card {
+            box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.14),
+            0 1px 3px 0 rgba(0, 0, 0, 0.14), 
+            0 1px 3px 0 rgba(0, 0, 0, 0.14);
+    
+            img {
+                height: 9rem;
+            }
+    
+            &:hover {
+                box-shadow: 0 1px 3px 0px #800000,
+                0 1px 3px 0 #800000, 
+                0 1px 3px 0 #800000 ;
+            }
+            .custome-pizza {
+                text-align: center;
+                box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.14),
+                0 1px 3px 0 rgba(0, 0, 0, 0.14), 
+                0 1px 3px 0 rgba(0, 0, 0, 0.14);
+                border-radius: 6px;
+                cursor: pointer !important;
+            }
+            .foot {
+                    .quantity {
+                        padding: 0;
+                        justify-content: space-between;
+                        padding: 0;
+                        display: flex;
+                        .quantity-value {
+                            position: relative;
+                            top: 6px;
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+                        .btn {
+                            font-size: 25px;
+                            font-weight: bold;
+                        }
+                        .minus {
+                            color: red;
+                        }
+                        .plus {
+                            color: green;
+                        }
+                    }
+                .btn:focus {
+                    outline: none !important;
+                    border: none !important;
+                    box-shadow: none;
+                }
+                .add-craft-btn {
+                    text-align: center;
+                    .btn-default {
+                        background: #800000 ;
+                        color: white;
+                        height: 2.5rem;
+                    }
+                }
+            }
+        }
+   
+      
+    }
+
+   
+
+      
+    
+}

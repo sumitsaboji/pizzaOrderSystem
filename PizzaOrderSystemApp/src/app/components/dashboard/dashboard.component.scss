@@ -1,0 +1,49 @@
+.dashboard {
+    .top-header {
+        // position: fixed;
+        // z-index: 9999;
+        // height: 8rem !important;
+        // width: 98%;
+        // background: white;
+        // margin-top: -17px;
+        // .col-lg-12 {
+        //     background: white;
+        // }
+    }
+    .header-iamge {
+        display: flex;
+        margin-bottom: 0.5rem;
+        .profile-name {
+            float: right;
+            position: relative;
+            top: 12px;
+        }
+    }
+    .menu-bar {
+        background: linear-gradient(to bottom, #8B0000 40%, #800000 50%);
+        padding: 0.2rem;
+        border-radius: 8px;
+        .items {
+            color: white;
+            .btn {
+                //  -webkit-box-shadow: inset 0 0 10px #000000;
+                margin-right: 0.5rem;;
+                 color: white;
+                 &:hover {
+                     background-color: #E0E0E0;
+                     color: black;
+                 }
+                 &:focus {
+                    background-color: #E0E0E0;
+                    color: black;
+                }
+            }
+
+        }
+    
+    }
+    .menu-bar  {
+        -webkit-box-shadow: inset 0 0 10px #000000
+    }
+
+}
