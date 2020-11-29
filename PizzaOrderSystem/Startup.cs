@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using PizzaOrderSystemRepository.Auth;
+using PizzaOrderSystemRepository.Order;
+using PizzaOrderSystemRepository.VegPizza;
 
 namespace PizzaOrderSystem
 {
@@ -26,6 +33,37 @@ namespace PizzaOrderSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddJwtBearer(options =>
+          {
+              options.TokenValidationParameters = new TokenValidationParameters
+              {
+                  ValidateIssuer = true,
+                  ValidateAudience = true,
+                  ValidateLifetime = true,
+                  ValidateIssuerSigningKey = true,
+                  ValidIssuer = Configuration["JWT:Issuer"],
+                  ValidAudience = Configuration["JWT:Issuer"],
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JWT:Secret"]))
+              };
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                "CrosPolicy",
+                builder => builder.WithOrigins("http://localhost:4200")
+                  .AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+                );
+            });
+            var appSettingsSection = Configuration.GetSection("DBSettings");
+            services.Configure<dynamic>(appSettingsSection);
+            services.AddSingleton<IVegPizzaRepository, VegPizzaRepository>();
+            services.AddSingleton<IAuthRepository, AuthRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,13 +73,14 @@ namespace PizzaOrderSystem
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("CrosPolicy");
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

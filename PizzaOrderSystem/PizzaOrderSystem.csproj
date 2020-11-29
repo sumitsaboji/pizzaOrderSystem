@@ -4,5 +4,23 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PizzaOrderSystemRepository\PizzaOrderSystemRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AttendanceSystemRepository">
+      <HintPath>..\..\..\Attendence System\APIV1\AttendanceSystemService\bin\Debug\AttendanceSystemRepository.dll</HintPath>
+    </Reference>
+    <Reference Include="AttendanceSystemService">
+      <HintPath>..\..\..\Attendence System\APIV1\AttendanceSystemService\bin\Debug\AttendanceSystemService.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>
