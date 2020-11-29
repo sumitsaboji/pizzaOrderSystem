@@ -23,6 +23,7 @@ export class CraftComponent implements OnInit {
   ngOnInit() {
     this.addItemIntoCraft();
     this.addRemoveItem();
+    this.addCustomisePizza();
   }
 
 
@@ -40,13 +41,37 @@ export class CraftComponent implements OnInit {
     });
   }
 
+
+  addCustomisePizza() {
+    this.sharedService.addcustomisePizza.subscribe(result => {
+      if (result) {
+        const data  = JSON.parse(JSON.stringify(result))
+        let topping = []; 
+        topping = data.toppings.map(a => a.toppingName);
+        if(data.isExtraCheeseSelected) {
+            topping.push('extra cheese');
+        }
+        let toppingMessage = topping.length > 0 ? 'With ' + topping.toString() : '';
+        data.description = data.size + ' Size'  + ' ' +  toppingMessage;
+        this.pizaa.push(data);
+        this.subTotal = this.pizaa.reduce((acc, val) => acc += (val.quantity * val.price), 0);
+
+      }
+    });
+  }
+
   identify(index, item){
     return item.name; 
  }
+
  addRemoveItem() {
   this.sharedService.addRemoveItemCraft.subscribe(result => {
     if (result) {
-      this.addRemoveItemSubFunc(result);
+      
+      if(this.pizaa.filter(a => a.pizzaId === result.pizzaId).length > 0 ) {
+        this.addRemoveItemSubFunc(result);
+      }
+      
     }
   });
   }
@@ -71,6 +96,12 @@ export class CraftComponent implements OnInit {
     _remove( this.pizaa, x => x.pizzaId === data.pizzaId);
 
   }
+
+  checkOut() {
+    this.sharedService.openAddressPopUpWindow(this.pizaa);
+  }
+
+  
 
 
 }

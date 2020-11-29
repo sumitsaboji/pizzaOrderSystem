@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuBarItem } from 'src/app/common/menu-bar.constant';
 import { RoutingService } from 'src/app/common/routing.service';
+import { SharedService } from 'src/app/common/shared.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +10,22 @@ import { RoutingService } from 'src/app/common/routing.service';
 })
 export class DashboardComponent implements OnInit {
   menuBarItem: any;
-  constructor(private routingService: RoutingService) {
+  userName: string;
+  constructor(private routingService: RoutingService, private sharedService:  SharedService) {
     this.menuBarItem = MenuBarItem;
   }
 
   ngOnInit() {
+    this.userName = localStorage.getItem('UserName');
+    this.getUserName();
+  }
+
+  getUserName() {
+    this.sharedService.userNameEvent.subscribe(result => {
+      if(result) {
+        this.userName = result;
+      }
+    })
   }
 
   navigateToMenu(menuName) {
@@ -35,7 +47,16 @@ export class DashboardComponent implements OnInit {
       case this.menuBarItem.OtherFood:
 
         break;
+      
+      case this.menuBarItem.YourOrder:
+          this.routingService.redirectToOrderList();
+      break;
+  
     }
+  }
+
+  signUp() {
+    this.sharedService.openAuthPopUpWindow(true);
   }
 
 }

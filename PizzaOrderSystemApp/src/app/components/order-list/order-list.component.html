@@ -1,0 +1,35 @@
+<div class="order-list">
+
+</div>
+<div class="craft-item" id="scrollDiv" >
+    <div class="card" *ngFor="let item of pizaa; trackBy:identify">
+        <p-card>
+            <div class="content">
+                <div class="name">
+                    <p>{{item.pizzaName}}
+                        <i class="pi pi-bars"   pTooltip="This pizza is customised" tooltipPosition="top"
+                          *ngIf="item.isCustomise && item.isCustomise === true" style="font-size: 1rem"></i>
+                    </p>
+                    <p>{{item.price}}</p>
+                </div>
+                <div class="description">
+
+                    <p *ngIf="!item.isCustomise && !item.isCustomise === true">{{item.description}}</p>
+                    <p *ngIf="item.isCustomise && item.isCustomise === true">{{item.description}}</p>
+                    </div>
+                <div class="quantity" >
+                    <p>Qantity: {{item.quantity? item.quantity : 0}}</p>
+                    <p>Total: {{item.quantity * item.price}}</p>
+                </div>
+                <div class="quantity plus-minus" >
+                    <!-- <button type="button" class="btn minus" [disabled]="item.quantity === 0" (click)="item.quantity = item.quantity - 1; addRemoveItemSubFunc(item)" >-</button> -->
+                    <!-- <span class="quantity-value" (click)="clear(item)">X</span> -->
+                    <!-- <button type="button" class="btn plus" (click)="item.quantity = item.quantity + 1;addRemoveItemSubFunc(item)">+</button> -->
+                </div>
+            </div>
+        </p-card>
+    </div>
+    <div class="no-craft-message" *ngIf="pizaa.length === 0">
+        There is no any item in Craft....
+    </div>
+</div>

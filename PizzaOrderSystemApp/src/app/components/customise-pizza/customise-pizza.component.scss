@@ -20,12 +20,20 @@
               }
         }
     }
+    .name {
+
+    }
     
     .size {
+        p {
+            margin-bottom: 0;
+        }
         padding-top: 1rem;
         font-weight: bold;
         .col-lg-12:nth-child(2) {
             display: flex;
+            padding-top: 1rem;
+            justify-content: space-between;
         }
         .col-lg-3 {
             padding: 1rem;
@@ -35,6 +43,16 @@
             box-shadow: 0 1px 1px 0 rgba(0,0,0,.05), 
             0 1px 2px 0 rgba(0,0,0,.1),
              0 2px 20px 0 rgba(0,0,0,.2)
+        }
+
+        .selectedSizeShadow {
+            padding: 1rem;
+            margin-right: 1rem;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 1px 0 #800000, 
+            0 1px 2px 0 #800000,
+             0 2px 20px 0 #800000
         }
     }
     .veg-toppings {
@@ -83,9 +101,9 @@
             .col-lg-3 {
                 padding: 0;
             }
-            .p-checkbox-label {
+            .p-radiobutton-label {
                 position: relative;
-                top: 6px;
+                top: 5px;
             }
             .crust-price {
                 margin-top: 1rem;
@@ -99,10 +117,10 @@
             font-weight: bold !important;
         }
         .col-lg-6 {
-            padding: 0;
+          //  padding: 0;
         }
         .col-lg-12 {
-            padding: 0;
+          //  padding: 0;
         }
         .extra-cheese-price {
             box-shadow: 0 1px 1px 0 rgba(0,0,0,.05), 
@@ -128,6 +146,61 @@
          
         }
 
+        .minus {
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+            position: relative;
+            bottom: 18px;
+            &:focus {
+                outline: none;
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        .plus {
+            font-size: 30px;
+            font-weight: bold;
+            color: green;
+            position: relative;
+            bottom: 18px;
+            &:focus {
+                outline: none;
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+    }
+
+    .total {
+      
+        .price {
+            background: #4CAF50;
+            border-radius: 5px;
+            color: #ffffff;
+            text-align: center;
+            height: 2.4rem;
+            
+            p {
+                position: relative;
+                top: 7px;
+            }
+        }
+        .add-craft {
+            background: #8B0000;
+            border-radius: 5px;
+            color: #ffffff;
+            text-align: center;
+            cursor: pointer;
+            height: 2.4rem;
+            p {
+                position: relative;
+                top: 7px;
+            }
+
+        }
     }
 
 

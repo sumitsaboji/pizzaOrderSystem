@@ -7,13 +7,17 @@
             <p-card>
                 <div class="content">
                     <div class="name">
-                        <p>{{item.pizzaName}}</p>
+                        <p>{{item.pizzaName}}
+                            <i class="pi pi-bars"   pTooltip="This pizza is customised" tooltipPosition="top"
+                              *ngIf="item.isCustomise && item.isCustomise === true" style="font-size: 1rem"></i>
+                        </p>
                         <p>{{item.price}}</p>
                     </div>
                     <div class="description">
-                        <p>{{item.description}}</p>
-    
-                    </div>
+
+                        <p *ngIf="!item.isCustomise && !item.isCustomise === true">{{item.description}}</p>
+                        <p *ngIf="item.isCustomise && item.isCustomise === true">{{item.description}}</p>
+                        </div>
                     <div class="quantity" >
                         <p>Qantity: {{item.quantity? item.quantity : 0}}</p>
                         <p>Total: {{item.quantity * item.price}}</p>
@@ -39,7 +43,7 @@
                 <p>Sub total : </p><span>{{subTotal}}</span>
             </div>
             <div class="col-lg-6 checkout">
-                <button type="button" class="btn">Checkout</button>
+                <button type="button" class="btn" (click)="checkOut()">Checkout</button>
             </div>
         </div>
     </div>

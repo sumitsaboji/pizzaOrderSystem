@@ -1,24 +1,28 @@
 <div class="customise-pizza">
-    <p-dialog header="" [(visible)]="display" (onHide)="hide()">
+    <p-dialog header="" modal="modal"[(visible)]="display" (onHide)="hide()">
 
         <div class="row img">
             <div class="col-lg-12">
                 <img src="{{_selectedCustomisePizza.imageLink}}" alt="Ms dhoni" width="100%" height="200rem" /> </div>
         </div>
-
+        <div class="row name">
+            <div class="col-lg-12">
+                <h5>{{_selectedCustomisePizza.pizzaName}} - {{(total * quantity) | currency: 'INR':true}}</h5>
+            </div>
+        </div>
         <div class="row size">
             <div class="col-lg-12">
                 <p>Select Size</p>
             </div>
             <div class="col-lg-12">
-                <div class="col-lg-3">
-                    Regular
+                <div (click)="selectedSize = 1;cal" class="col-lg-3" [ngClass]="{'selectedSizeShadow': selectedSize === 1}"                >
+                    <p >Regular - {{customisePizzaMaster.regularPrice | currency: 'INR':true}}</p>
                 </div>
-                <div class="col-lg-3">
-                    Medium
+                <div (click)="selectedSize = 2" class="col-lg-3" [ngClass]="{'selectedSizeShadow': selectedSize === 2}">
+                    <p> Medium - {{customisePizzaMaster.mediumPrice | currency: 'INR':true}}</p>
                 </div>
-                <div class="col-lg-3">
-                    Large
+                <div (click)="selectedSize = 3" class="col-lg-3" [ngClass]="{'selectedSizeShadow': selectedSize === 3}">
+                    <p> Large - {{customisePizzaMaster.largePrice | currency: 'INR':true}}</p>
                 </div>
             </div>
 
@@ -29,7 +33,7 @@
                 <p>Add Veg Toppings </p>
             </div>
             <div class="col-lg-12">
-                <p-carousel [value]="toppingsList" [numVisible]="3" [numScroll]="1">
+                <p-carousel [value]="customisePizzaMaster.topping" [numVisible]="3" [numScroll]="1">
                     <ng-template let-toppings pTemplate="item">
                         <p>
                             {{toppings.toppingName}}
@@ -41,10 +45,10 @@
                             <p>{{toppings.toppingPirce | currency: 'INR':true}}</p>
                         </div>
                         <div class="add-topping">
-                            <button type="button" class="btn add-btn" *ngIf="!toppings.false"
-                                (click)="toppings.false = !toppings.false">Add</button>
-                            <button type="button" class="btn remove-btn" *ngIf="toppings.false"
-                                (click)="toppings.false = !toppings.false">Remove</button>
+                            <button type="button" class="btn add-btn" *ngIf="!toppings.isSelected"
+                                (click)="toppings.isSelected = !toppings.isSelected">Add</button>
+                            <button type="button" class="btn remove-btn" *ngIf="toppings.isSelected"
+                                (click)="toppings.isSelected = !toppings.isSelected">Remove</button>
 
                         </div>
 
@@ -57,24 +61,27 @@
             <div class="col-lg-12 header">
                 <p>Select Crust</p>
             </div>
-            <div class="col-lg-12 crust-checkbox">
-                <div class="col-lg-3">
-                    <p-checkbox name="groupname" value="199" label="New Hand Tossed" [(ngModel)]="selectedValues"></p-checkbox>
-                    <p class="crust-price">{{199 | currency: 'INR':true}}</p>
+            <div class="col-lg-12">
+                <div class="crust-checkbox">
+                    <div class="col-lg-3">
+                        <p-radioButton name="groupname" value="{{customisePizzaMaster.NewHandTossed}}" label="New Hand Tossed" [(ngModel)]="selectedCrust"></p-radioButton>
+                        <p class="crust-price">{{customisePizzaMaster.NewHandTossed | currency: 'INR':true}}</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p-radioButton name="groupname" value="{{customisePizzaMaster.WheatThinCrust}}" label="Wheat Thin Crust" [(ngModel)]="selectedCrust"></p-radioButton>
+                        <p class="crust-price">{{customisePizzaMaster.WheatThinCrust | currency: 'INR':true}}</p>
+    
+                    </div>
+                    <div class="col-lg-3">
+                            <p-radioButton name="groupname" value="{{customisePizzaMaster.WheatThikCrust}}" label="Wheat Thin Crust" [(ngModel)]="selectedCrust"></p-radioButton>
+                        <p class="crust-price">{{customisePizzaMaster.WheatThikCrust | currency: 'INR':true}}</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p-radioButton name="groupname" value="{{customisePizzaMaster.FreshPanPizza}}" label="Fresh Pan Pizza" [(ngModel)]="selectedCrust"></p-radioButton>
+                        <p class="crust-price">{{customisePizzaMaster.FreshPanPizza | currency: 'INR':true}}</p>
+                    </div>
                 </div>
-                <div class="col-lg-3">
-                    <p-checkbox name="groupname" value="249" label="Wheat Thin Crust" [(ngModel)]="selectedValues"></p-checkbox>
-                    <p class="crust-price">{{249 | currency: 'INR':true}}</p>
-
-                </div>
-                <div class="col-lg-3">
-                    <p-checkbox name="groupname" value="298" label="Cheese Burst" [(ngModel)]="selectedValues"></p-checkbox>
-                    <p class="crust-price">{{298 | currency: 'INR':true}}</p>
-                </div>
-                <div class="col-lg-3">
-                    <p-checkbox name="groupname" value="298" label="Fresh Pan Pizza" [(ngModel)]="selectedValues"></p-checkbox>
-                    <p class="crust-price">{{298 | currency: 'INR':true}}</p>
-                </div>
+               
 
             </div>
         </div>
@@ -86,18 +93,37 @@
                 </div>
                 <div class="col-lg-12 extra-cheese-price">
                     <span class="radio">
-                        <p-checkbox name="groupname" value="val1"
-                            [(ngModel)]="_selectedCustomisePizza.isExtraCheeseSelected"
+                        <p-checkbox name="groupname" value="{{extraCheesePrice}}"
+                            [(ngModel)]="isExtraCheeseSelected"
                             label="I want extra cheese {{extraCheesePrice | currency: 'INR':true}}"></p-checkbox>
 
                     </span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="col-lg-12 header">
+                    <p>Qantity </p>
+                </div>
+                <div class="col-lg-12 extra-cheese-price">
+                    <button type="button" class="btn minus" [disabled] ="quantity === 1" (click)="quantity = quantity - 1" >-</button>
+                    <span class="quantity-value">{{quantity}}</span>
+                    <button type="button" class="btn plus" (click)="quantity = quantity + 1" >+</button>
                 </div>
 
             </div>
         </div>
 
-        <div class="total">
-            <p>Sub Total: 100</p>
+        <div class="row total">
+            <div class="col-lg-6 ">
+                <div class="price">
+                    <p>Sub Total: {{(total * quantity) | currency: 'INR':true}}</p>
+                </div>
+            </div>
+            <div class="col-lg-6" (click)="addCraft()">
+                <div class="add-craft">
+                    <p>Add to Craft</p>
+                </div>
+            </div>
         </div>
 
     </p-dialog>

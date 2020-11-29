@@ -1,2 +1,4 @@
 
+<app-address *ngIf="addressDisplay"  [addressDisplayInput] = "addressDisplay"(closedaddressPopUp)="closedAddressPopUp()"></app-address>
+<app-auth *ngIf="authDisplay" [authDisplayInput] = "authDisplay" (closedAuthPopUp) ="closedPopUp()"></app-auth>
 <router-outlet></router-outlet>

@@ -10,6 +10,9 @@ export class RoutingService {
 
   redirectToVegPizza() {
     this.route.navigate(['dashboard/veg-pizza']);
+  }
 
+  redirectToOrderList() {
+    this.route.navigate(['dashboard/order-list']);
   }
 }

@@ -1,0 +1,33 @@
+<div class="address">
+
+    <p-dialog header="Add Address" modal="modal"[(visible)]="addressDisplayInput" (onHide)="hide()">
+        <form>
+            <div class="input">
+                <span class="p-field">
+                    <label for="float-input">Address Line 1</label>
+                    <input name="username" id="float-input" type="text" [(ngModel)]="address.addressLine1" pInputText>
+                </span>
+            </div>
+
+            <div class="input">
+                <span class="p-field">
+                    <label for="float-input">Address Line 2</label>
+                    <input name="username" id="float-input" type="text" [(ngModel)]="address.addressLine2" pInputText>
+                </span>
+            </div>
+
+            <div class="input" >
+                <span class="p-field">
+                    <label for="float-input">Mobile No</label>
+                    <input name="username" id="float-input" type="number" [(ngModel)]="address.mobileNo" pInputText>
+                </span>
+            </div>
+
+            <div class="input">
+                <span class="p-field">
+                    <button   pButton type="button" label="Submit" (click)="submit()"></button>
+                </span>
+            </div>
+        </form>
+    </p-dialog>
+</div>

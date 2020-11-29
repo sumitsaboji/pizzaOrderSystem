@@ -17,6 +17,7 @@
             float: right;
             position: relative;
             top: 12px;
+            cursor: pointer;
         }
     }
     .menu-bar {
@@ -37,6 +38,9 @@
                     background-color: #E0E0E0;
                     color: black;
                 }
+            }
+            .order {
+                float: right;
             }
 
         }

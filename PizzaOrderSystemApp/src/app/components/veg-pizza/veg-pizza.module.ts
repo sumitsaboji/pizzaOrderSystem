@@ -10,6 +10,10 @@ import {DialogModule} from 'primeng/dialog';
 import { CustomisePizzaComponent } from '../../components/customise-pizza/customise-pizza.component';
 import {CarouselModule} from 'primeng/carousel';
 import {CheckboxModule} from 'primeng/checkbox';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import { FormsModule } from '@angular/forms';
+import {TooltipModule} from 'primeng/tooltip';
+
 
 @NgModule({
   declarations: [VegPizzaComponent, CraftComponent, CustomisePizzaComponent],
@@ -20,6 +24,9 @@ import {CheckboxModule} from 'primeng/checkbox';
     SplitButtonModule,
     DialogModule,
     CarouselModule,
-    CheckboxModule    ]
+    CheckboxModule,
+    RadioButtonModule,
+    FormsModule,
+    TooltipModule]
 })
 export class VegPizzaModule { }

@@ -1,0 +1,41 @@
+<div class="address">
+
+    <p-dialog header="Sign Up" modal="modal" [(visible)]="authDisplayInput" (onHide)="hide()">
+        <form>
+            <div class="input" *ngIf="isregister" >
+                <span class="p-field">
+                    <label for="float-input">Username</label>
+                    <input name="username" id="float-input" type="text" [(ngModel)]="auth.UserName" pInputText>
+                </span>
+            </div>
+            <div class="input" >
+                <span class="p-field">
+                    <label for="float-input">Mobile No</label>
+                    <p-inputMask  name="mobileNo" [(ngModel)]="auth.MobileNo"  mask="9999999999" ></p-inputMask>
+                </span>
+            </div>
+            <div class="input" >
+                <span class="p-field">
+                    <label for="float-input">Password</label>
+                    <input name="password" id="float-input" type="password"  [(ngModel)]="auth.password" pInputText>
+                </span>
+            </div>
+
+            <div class="input" *ngIf="isregister">
+                <span class="p-field">
+                    <label for="float-input">Confrim password</label>
+                    <input name="confirmpassword" id="float-input" type="password" pInputText>
+                </span>
+            </div>
+
+            <div class="input">
+                <span class="p-field">
+                    <button  *ngIf="!isregister" pButton type="button" label="Login" (click)="login()"></button>
+                    <button  *ngIf="isregister" pButton type="button" label="Register" (click)="register()"></button>
+                </span>
+            </div>
+
+
+        </form>
+    </p-dialog>
+</div>
