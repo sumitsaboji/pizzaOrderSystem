@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, Output, ViewChild, ViewEncapsulation, EventEmitter } from '@angular/core';
-import { pizaa } from 'src/app/common-models/pizaa-model';
+import { pizza } from 'src/app/common-models/pizza-model';
 import { SharedService } from 'src/app/common/shared.service';
 import _remove from 'lodash/remove';
+import { ToasMessageService } from 'src/app/common/toas-message.service';
 
 @Component({
   selector: 'app-craft',
@@ -10,12 +11,12 @@ import _remove from 'lodash/remove';
   encapsulation: ViewEncapsulation.None
 })
 export class CraftComponent implements OnInit {
-  pizaa: pizaa[]; 
+  pizaa: pizza[]; 
   subTotal: number;
   @ViewChild('scrollDiv') scroll: ElementRef;
   @Output() updatedCount = new EventEmitter<any>();
 
-  constructor(private sharedService: SharedService) { 
+  constructor(private sharedService: SharedService, private toasMessageService: ToasMessageService) { 
     this.pizaa = [];
     this.subTotal = 0;
   }
@@ -24,6 +25,7 @@ export class CraftComponent implements OnInit {
     this.addItemIntoCraft();
     this.addRemoveItem();
     this.addCustomisePizza();
+    this.clearCraft();
   }
 
 
@@ -98,8 +100,21 @@ export class CraftComponent implements OnInit {
   }
 
   checkOut() {
-    this.sharedService.openAddressPopUpWindow(this.pizaa);
+    if(localStorage.getItem("Id")) {
+      this.sharedService.openAddressPopUpWindow(this.pizaa);
+    } else {
+      this.sharedService.openAuthPopUpWindow(this.pizaa);
+    }
   }
+
+  clearCraft() {
+   this.sharedService.clearCraftevent.subscribe(result => {
+     if(result) {
+       this.pizaa = [];
+     }
+   })
+  }
+
 
   
 

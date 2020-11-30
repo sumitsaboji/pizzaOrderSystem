@@ -10,7 +10,7 @@ namespace PizzaOrderSystemRepository.Auth
     public interface IAuthRepository
     {
         Task<AuthViewModel> Login(AuthViewModel AuthViewModel);
-        Task<string> Register(AuthViewModel AuthViewModel);
+        Task<AuthViewModel> Register(AuthViewModel AuthViewModel);
 
         string  GenerateJSONWebToken(AuthViewModel AuthViewModel);
 

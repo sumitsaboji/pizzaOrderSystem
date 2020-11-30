@@ -16,6 +16,10 @@ import {InputMaskModule} from 'primeng/inputmask';
 import { FormsModule } from '@angular/forms';
 import { HttpInterceptor } from './services/interceptor.service';
 import { OrderListComponent } from './components/order-list/order-list.component';
+import { CommingSoonComponent } from './components/comming-soon/comming-soon.component';
+import { CustomeCommonModule } from './custome-common-module/custome-common.module';
+import { MessageService } from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import { OrderListComponent } from './components/order-list/order-list.component
     DashboardComponent,
     AddressComponent,
     AuthComponent,
-    OrderListComponent
+    OrderListComponent,
+    CommingSoonComponent
     ],
   imports: [
     BrowserModule,
@@ -35,14 +40,16 @@ import { OrderListComponent } from './components/order-list/order-list.component
     DialogModule,
     ButtonModule,
     InputMaskModule,
-    FormsModule
+    FormsModule,
+    CustomeCommonModule,
+    ToastModule
     ],
 
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: HttpInterceptor,
     multi: true
-  }],
+  }, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

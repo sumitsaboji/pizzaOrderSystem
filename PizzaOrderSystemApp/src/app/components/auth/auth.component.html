@@ -1,41 +1,62 @@
+<app-loader *ngIf="isloading"></app-loader>
 <div class="address">
-
     <p-dialog header="Sign Up" modal="modal" [(visible)]="authDisplayInput" (onHide)="hide()">
-        <form>
+        <form  #noticeDetailsForm="ngForm">
+            <div class="input not-register" *ngIf="isregister">
+                <p>{{unregisterMessage}}</p>
+            </div>
+            
             <div class="input" *ngIf="isregister" >
                 <span class="p-field">
                     <label for="float-input">Username</label>
-                    <input name="username" id="float-input" type="text" [(ngModel)]="auth.UserName" pInputText>
+                    <input name="username" #username="ngModel" id="float-input" type="text" [(ngModel)]="auth.UserName" pInputText
+                    required>
+                    <p *ngIf = "(username.invalid && (username.dirty || username.touched))" class="danger">
+                        Please enter user name.
+                    </p>
                 </span>
             </div>
             <div class="input" >
                 <span class="p-field">
                     <label for="float-input">Mobile No</label>
-                    <p-inputMask  name="mobileNo" [(ngModel)]="auth.MobileNo"  mask="9999999999" ></p-inputMask>
+                    <input name="mobileNo" #mobileNo="ngModel"  id="float-input" type="number" maxlength="10" minlength="10" [(ngModel)]="auth.MobileNo" pInputText
+                    required>
+                    <p *ngIf = "(mobileNo.invalid && (mobileNo.dirty || mobileNo.touched))" class="danger">
+                        Please enter mobile number.
+                    </p>
                 </span>
             </div>
             <div class="input" >
                 <span class="p-field">
                     <label for="float-input">Password</label>
-                    <input name="password" id="float-input" type="password"  [(ngModel)]="auth.password" pInputText>
+                    <input name="password" #password="ngModel"  id="float-input" type="password"  [(ngModel)]="auth.password" pInputText
+                    required>
+                    <p *ngIf = "(password.invalid && (password.dirty || password.touched))" class="danger">
+                        Please enter password.
+                    </p>
                 </span>
             </div>
 
             <div class="input" *ngIf="isregister">
                 <span class="p-field">
                     <label for="float-input">Confrim password</label>
-                    <input name="confirmpassword" id="float-input" type="password" pInputText>
+                    <input name="confirmpassword"  #confirmpassword="ngModel" id="float-input" [(ngModel)]="auth.ConfirmPassword" type="password" pInputText
+                    required>
                 </span>
+                <p *ngIf = "(confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)) " class="danger">
+                    Please enter confirmpassword password.
+                </p>
+                <div class="danger" *ngIf="( (confirmpassword.dirty || confirmpassword.touched) && auth.ConfirmPassword !== auth.password )">
+                    Password and Confrim Password does not macth..     
+                </div>
             </div>
 
             <div class="input">
                 <span class="p-field">
-                    <button  *ngIf="!isregister" pButton type="button" label="Login" (click)="login()"></button>
-                    <button  *ngIf="isregister" pButton type="button" label="Register" (click)="register()"></button>
+                    <button  *ngIf="!isregister" pButton type="button" label="Login" [disabled]="!noticeDetailsForm.valid" (click)="login()"></button>
+                    <button  *ngIf="isregister" pButton type="button" label="Register" [disabled]="!noticeDetailsForm.valid || auth.ConfirmPassword !== auth.password" (click)="register()"></button>
                 </span>
             </div>
-
-
         </form>
     </p-dialog>
 </div>

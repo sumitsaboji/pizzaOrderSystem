@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using NLog.Extensions.Logging;
+using PizzaOrderSystem.Helper;
 using PizzaOrderSystemRepository.Auth;
 using PizzaOrderSystemRepository.Order;
 using PizzaOrderSystemRepository.VegPizza;
@@ -32,7 +34,16 @@ namespace PizzaOrderSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddConfiguration(Configuration.GetSection("Logging"));
+                loggingBuilder.AddNLog(Configuration);
+            });
+            services.AddControllers(config =>
+            {
+                config.Filters.Add(typeof(ExceptionFilter));
+            });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(options =>
           {

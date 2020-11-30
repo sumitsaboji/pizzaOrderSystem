@@ -18,6 +18,10 @@
             position: relative;
             top: 12px;
             cursor: pointer;
+            font-weight: bold;
+        }
+        .logedIn {
+            margin-right: 5px;
         }
     }
     .menu-bar {
@@ -43,6 +47,10 @@
                 float: right;
             }
 
+        }
+        .selectedMenu {
+            background-color: #E0E0E0;
+            color: black !important;
         }
     
     }

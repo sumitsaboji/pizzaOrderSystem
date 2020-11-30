@@ -1,6 +1,8 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { pizaa } from 'src/app/common-models/pizaa-model';
+import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { pizza } from 'src/app/common-models/pizza-model';
 import { SharedService } from 'src/app/common/shared.service';
+import { ToasMessageService } from 'src/app/common/toas-message.service';
 import { VegPizzaService } from '../../services/veg-pizza.service';
 
 @Component({
@@ -9,12 +11,17 @@ import { VegPizzaService } from '../../services/veg-pizza.service';
   styleUrls: ['./veg-pizza.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class VegPizzaComponent implements OnInit {
-  pizaa: pizaa[]; 
+export class VegPizzaComponent implements OnInit, OnDestroy {
+  pizaa: pizza[]; 
   display: boolean;
   selectedPizza: any;
-  constructor(private sharedService: SharedService, private vegPizzaService: VegPizzaService) {
+  isloading: boolean;
+  subscription: Subscription[]; 
+  constructor(private sharedService: SharedService, private vegPizzaService: VegPizzaService,
+    private toasMessageService: ToasMessageService) {
     this.display = false;
+    this.isloading = false;
+    this.subscription = [];
   }
  
 
@@ -24,12 +31,18 @@ export class VegPizzaComponent implements OnInit {
   }
 
   GetVegPizzaList() {
-    this.vegPizzaService.GetVegPizzaList().subscribe(result => {
+    this.isloading =  true;
+    this.subscription.push(this.vegPizzaService.GetVegPizzaList().subscribe(result => {
       if(result) {
+        this.isloading =  false;
           this.pizaa = result;
           this.pizaa.map(a => a.imageLink = '../../../../../assets//Images/pizza-images/' + a.imageLink);
       }
-    });
+    }, error => {
+      this.isloading =  false;
+      this.toasMessageService.showErrorMessage('Somethink went wrong.');
+
+    }));
 
   }
   addRemoveItem(data) {
@@ -47,6 +60,10 @@ export class VegPizzaComponent implements OnInit {
 
   hidePopUp(data) {
     this.display = !this.display;
+  }
+
+  ngOnDestroy() {
+    this.subscription.map(a => a.unsubscribe)
   }
 
 }

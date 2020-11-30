@@ -13,6 +13,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
 import {TooltipModule} from 'primeng/tooltip';
+import { CustomeCommonModule } from 'src/app/custome-common-module/custome-common.module';
 
 
 @NgModule({
@@ -27,6 +28,8 @@ import {TooltipModule} from 'primeng/tooltip';
     CheckboxModule,
     RadioButtonModule,
     FormsModule,
-    TooltipModule]
+    TooltipModule,
+    CustomeCommonModule
+    ]
 })
 export class VegPizzaModule { }

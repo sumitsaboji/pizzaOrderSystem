@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Address } from '../common-models/address';
-import { pizaa } from '../common-models/pizaa-model';
+import { pizza } from '../common-models/pizza-model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,9 @@ export class OrderService {
     return this.http.post(url, address);
   }
 
-  getOrders(): Observable<pizaa[]> {
+  getOrders(): Observable<Address[]> {
     const url = this.baseUrl  +   environment.Order.getOrders;
-    return this.http.get<pizaa[]>(url);
+    return this.http.get<Address[]>(url);
   }
 
 }

@@ -24,6 +24,7 @@ namespace PizzaOrderSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> GetVegPizzaList()
         {
+          
             return Ok(await _vegPizzaRepository.GetVegPizzaList());
         }
         [HttpGet]

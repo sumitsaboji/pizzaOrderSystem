@@ -1,0 +1,33 @@
+$background:rgba(0,0,0,0.5);
+.loader-view-section {
+position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $background;
+}
+
+.spinnerPosition
+{
+  display: table;
+  width: 100%;
+  height: 100%;
+    p-progressspinner{
+      display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+  @keyframes loading {
+    from {left: -100px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% {left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+  }
+
+

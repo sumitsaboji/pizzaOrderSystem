@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, Input, DoCheck } from '@angular/core';
-import { topping } from 'src/app/common-models/topping';
+import { Topping } from '../../common-models/topping';
 import { VegPizzaService } from '../veg-pizza/services/veg-pizza.service';
 import {SharedService} from '../../common/shared.service'
 
@@ -13,7 +13,7 @@ import {SharedService} from '../../common/shared.service'
 export class CustomisePizzaComponent implements OnInit, DoCheck {
   display: any;
   _selectedCustomisePizza: any;
-  toppingsList: topping[];
+  toppingsList: Topping[];
   extraCheesePrice: number;
   selectedCrust: number;
   customisePizzaMaster: any;

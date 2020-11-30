@@ -46,7 +46,7 @@ namespace PizzaOrderSystemRepository.Auth
             });
         }
 
-        public async Task<string> Register(AuthViewModel auth)
+        public async Task<AuthViewModel> Register(AuthViewModel auth)
         {
             auth.UserId = Guid.NewGuid(); 
             return await Task.Run(() =>
@@ -58,7 +58,7 @@ namespace PizzaOrderSystemRepository.Auth
                 {
                     writer.WriteLine(JsonRegister);
                 }
-                return "";
+                return auth;
             });
         }
 

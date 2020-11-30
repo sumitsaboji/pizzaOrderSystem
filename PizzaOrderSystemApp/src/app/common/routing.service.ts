@@ -15,4 +15,8 @@ export class RoutingService {
   redirectToOrderList() {
     this.route.navigate(['dashboard/order-list']);
   }
+
+  redirectToCommingSoon() {
+    this.route.navigate(['dashboard/comming-soon']);
+  }
 }

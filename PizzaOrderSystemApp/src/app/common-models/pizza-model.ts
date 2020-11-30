@@ -1,4 +1,4 @@
-export class pizaa {
+export class pizza {
     pizzaId?:number;
     pizzaName?: string;
     description?: string;
@@ -6,4 +6,5 @@ export class pizaa {
     imageLink?: string;
     quantity?: number;
     isExtraCheeseSelected?: boolean;
+    pizzaListItem?:any[];
 }

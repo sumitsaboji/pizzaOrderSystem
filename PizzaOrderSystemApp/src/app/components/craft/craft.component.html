@@ -11,7 +11,7 @@
                             <i class="pi pi-bars"   pTooltip="This pizza is customised" tooltipPosition="top"
                               *ngIf="item.isCustomise && item.isCustomise === true" style="font-size: 1rem"></i>
                         </p>
-                        <p>{{item.price}}</p>
+                        <p>{{item.price | currency: 'INR':true}}</p>
                     </div>
                     <div class="description">
 
@@ -20,7 +20,7 @@
                         </div>
                     <div class="quantity" >
                         <p>Qantity: {{item.quantity? item.quantity : 0}}</p>
-                        <p>Total: {{item.quantity * item.price}}</p>
+                        <p>Total: {{item.quantity * item.price | currency: 'INR':true}}</p>
                     </div>
                     <div class="quantity plus-minus" >
                         <!-- <button type="button" class="btn minus" [disabled]="item.quantity === 0" (click)="item.quantity = item.quantity - 1; addRemoveItemSubFunc(item)" >-</button> -->
@@ -40,7 +40,7 @@
     <div class="sub-total" *ngIf="pizaa.length > 0">
         <div class="col-lg-12">
             <div class="col-lg-6 price">
-                <p>Sub total : </p><span>{{subTotal}}</span>
+                <p>Grand total : </p><span>{{subTotal}}</span>
             </div>
             <div class="col-lg-6 checkout">
                 <button type="button" class="btn" (click)="checkOut()">Checkout</button>

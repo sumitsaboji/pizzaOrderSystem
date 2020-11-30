@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { pizaa } from '../common-models/pizaa-model';
+import { pizza } from '../common-models/pizza-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
-  private addItemIntoCraftSouce  = new BehaviorSubject<pizaa>(null);
+  private addItemIntoCraftSouce  = new BehaviorSubject<pizza>(null);
   addItemIntoCraft = this.addItemIntoCraftSouce.asObservable();
 
-  private addRemoveItemCraftSouce =  new BehaviorSubject<pizaa>(null);
+  private addRemoveItemCraftSouce =  new BehaviorSubject<pizza>(null);
   addRemoveItemCraft = this.addRemoveItemCraftSouce.asObservable();
 
   
-  private addcustomisePizzaSouce = new BehaviorSubject<pizaa>(null);
+  private addcustomisePizzaSouce = new BehaviorSubject<pizza>(null);
   addcustomisePizza = this.addcustomisePizzaSouce.asObservable();
 
   private authSource = new BehaviorSubject(null);
@@ -25,6 +25,10 @@ export class SharedService {
 
   private userNameSource = new BehaviorSubject(null);
   userNameEvent = this.userNameSource.asObservable();
+
+  
+  private clearCraftSource = new BehaviorSubject(null);
+  clearCraftevent = this.clearCraftSource.asObservable();
 
   constructor() { }
 
@@ -50,5 +54,10 @@ export class SharedService {
 
   populateUserName(data) {
     this.userNameSource.next(data);
+  }
+
+  clearCraft(data) {
+    this.clearCraftSource.next(data);
+
   }
 }

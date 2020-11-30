@@ -1,35 +1,45 @@
 <div class="order-list">
+    <div class="col-lg-12" *ngIf="address && address.length > 0">
+        <div class="main-div">
 
-</div>
-<div class="craft-item" id="scrollDiv" >
-    <div class="card" *ngFor="let item of pizaa; trackBy:identify">
-        <p-card>
-            <div class="content">
-                <div class="name">
-                    <p>{{item.pizzaName}}
-                        <i class="pi pi-bars"   pTooltip="This pizza is customised" tooltipPosition="top"
-                          *ngIf="item.isCustomise && item.isCustomise === true" style="font-size: 1rem"></i>
-                    </p>
-                    <p>{{item.price}}</p>
+            <div class="a" *ngFor="let order of address; let i = index">
+                <div class="header">
+                    Order No {{i +1}}
                 </div>
-                <div class="description">
+                <div class="craft-item">
+                    <div class="card" *ngFor="let item of order.pizzaList">
+                        <p-card>
+                            <div class="content">
+                                <div class="name">
+                                    <p>{{item.pizzaName}}
+                                    </p>
+                                    <p>{{item.price | currency: 'INR':true}}</p>
+                                </div>
+                                <div class="description">
+                                    <p>{{item.description}}</p>
+                                </div>
+                                <div class="quantity">
+                                    <p>Qantity: {{item.quantity? item.quantity : 0}}</p>
+                                    <p>Total: {{item.quantity * item.price}}</p>
+                                </div>
+                                <div class="quantity plus-minus">
 
-                    <p *ngIf="!item.isCustomise && !item.isCustomise === true">{{item.description}}</p>
-                    <p *ngIf="item.isCustomise && item.isCustomise === true">{{item.description}}</p>
+                                </div>
+                            </div>
+                        </p-card>
                     </div>
-                <div class="quantity" >
-                    <p>Qantity: {{item.quantity? item.quantity : 0}}</p>
-                    <p>Total: {{item.quantity * item.price}}</p>
                 </div>
-                <div class="quantity plus-minus" >
-                    <!-- <button type="button" class="btn minus" [disabled]="item.quantity === 0" (click)="item.quantity = item.quantity - 1; addRemoveItemSubFunc(item)" >-</button> -->
-                    <!-- <span class="quantity-value" (click)="clear(item)">X</span> -->
-                    <!-- <button type="button" class="btn plus" (click)="item.quantity = item.quantity + 1;addRemoveItemSubFunc(item)">+</button> -->
+                <div class="sub-total">
+                    <div class="col-lg-12">
+                            <p>Sub total : </p><span>{{getSubtotal(order) | currency: 'INR':true}}</span>
+                    </div>
                 </div>
             </div>
-        </p-card>
+        </div>
     </div>
-    <div class="no-craft-message" *ngIf="pizaa.length === 0">
-        There is no any item in Craft....
+
+    <div class="no-order" *ngIf="address.length ===0">
+        <span>There is no any order you have placed</span>
     </div>
+
 </div>

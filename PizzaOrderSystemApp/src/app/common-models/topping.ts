@@ -1,4 +1,5 @@
-export class topping {
+  
+export class Topping {
     topingId?: number;
     toppingName?: string;
     toppingImageLink?: string;
