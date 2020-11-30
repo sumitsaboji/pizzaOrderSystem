@@ -9,7 +9,7 @@
             <div class="input" *ngIf="isregister" >
                 <span class="p-field">
                     <label for="float-input">Username</label>
-                    <input name="username" #username="ngModel" id="float-input" type="text" [(ngModel)]="auth.UserName" pInputText
+                    <input name="username" #username="ngModel" id="float-input" type="text" [(ngModel)]="auth.userName" pInputText
                     required>
                     <p *ngIf = "(username.invalid && (username.dirty || username.touched))" class="danger">
                         Please enter user name.

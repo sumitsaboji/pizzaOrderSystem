@@ -1,6 +1,6 @@
 export class Auth {
     userName?: string;
     MobileNo?: number;
-    Password?: string;
+    password?: string;
     ConfirmPassword?: string;
 }
