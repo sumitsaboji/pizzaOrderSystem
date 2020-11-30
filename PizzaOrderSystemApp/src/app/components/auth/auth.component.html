@@ -56,6 +56,13 @@
                     <button  *ngIf="!isregister" pButton type="button" label="Login" [disabled]="!noticeDetailsForm.valid" (click)="login()"></button>
                     <button  *ngIf="isregister" pButton type="button" label="Register" [disabled]="!noticeDetailsForm.valid || auth.ConfirmPassword !== auth.password" (click)="register()"></button>
                 </span>
+                
+            </div>
+            <div class="input">
+                <span class="p-field">
+                    <button  *ngIf="!isregister" pButton type="button" label="Click to create new Account"  (click)="isregister = true"></button>
+                </span>
+                
             </div>
         </form>
     </p-dialog>
