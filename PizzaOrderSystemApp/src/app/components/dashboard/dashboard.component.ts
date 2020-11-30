@@ -72,6 +72,8 @@ export class DashboardComponent implements OnInit {
   logOut() {
     this.userName = '';
     localStorage.clear();
+    this.sharedService.userLogOut();
+
   }
 
 }

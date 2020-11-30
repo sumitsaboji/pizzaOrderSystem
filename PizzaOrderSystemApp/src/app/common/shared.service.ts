@@ -30,6 +30,12 @@ export class SharedService {
   private clearCraftSource = new BehaviorSubject(null);
   clearCraftevent = this.clearCraftSource.asObservable();
 
+  private userLogedInSource = new BehaviorSubject(null);
+  userLoginEvent = this.userLogedInSource.asObservable();
+
+  private userLogedOutSource = new BehaviorSubject(null);
+  userLogedOutEvent = this.userLogedOutSource.asObservable();
+
   constructor() { }
 
   addItemIntoCraftFunc(data) {
@@ -58,6 +64,14 @@ export class SharedService {
 
   clearCraft(data) {
     this.clearCraftSource.next(data);
+  }
 
+  userLogin() {
+    this.userLogedInSource.next(true);
+  }
+
+  
+  userLogOut() {
+    this.userLogedOutSource.next(true);
   }
 }

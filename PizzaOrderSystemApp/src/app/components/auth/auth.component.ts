@@ -69,6 +69,8 @@ export class AuthComponent implements OnInit, OnDestroy {
         localStorage.setItem('Id', result.data.id);
         this.authDisplayInput = false;
         this.sharedService.populateUserName(this.userName);
+        this.sharedService.userLogin();
+
       } else {
         this.unregisterMessage = 'You dont have an account please Register here';
         this.isregister = true;

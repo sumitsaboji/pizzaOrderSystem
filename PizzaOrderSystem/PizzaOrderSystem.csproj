@@ -15,12 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="AttendanceSystemRepository">
-      <HintPath>..\..\..\Attendence System\APIV1\AttendanceSystemService\bin\Debug\AttendanceSystemRepository.dll</HintPath>
-    </Reference>
-    <Reference Include="AttendanceSystemService">
-      <HintPath>..\..\..\Attendence System\APIV1\AttendanceSystemService\bin\Debug\AttendanceSystemService.dll</HintPath>
-    </Reference>
+   
   </ItemGroup>
 
 

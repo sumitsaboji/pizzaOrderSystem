@@ -24,10 +24,10 @@ export class HttpInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(
         (err, caught) => {
-          if (err.status === 401) {
-            this.handleAuthError();
-            return of(err);
-          }
+          // if (err.status === 401) {
+          //   this.handleAuthError();
+          //   return of(err);
+          // }
           throw err;
         }
       )
